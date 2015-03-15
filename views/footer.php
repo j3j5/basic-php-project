@@ -9,12 +9,18 @@
 
 		</div>
 
-		<!-- Bootstrap core JavaScript
+		<!-- JS at the footer
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap-slider.js"></script>
-		<script type="text/javascript" src="/js/global.js"></script>
+		<?php
+		foreach($css_files['footer'] AS $file) {
+			echo '<link href="' . $file . '" rel="stylesheet">'.PHP_EOL;
+		}
+
+		foreach($js_files['footer'] AS $file) {
+			echo '<script  src="' . $file . '></script>'.PHP_EOL;
+		}
+		?>
+
 	</body>
 </html>

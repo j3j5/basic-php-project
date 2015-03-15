@@ -2,6 +2,10 @@
 
 ob_start();
 
+$view_data = array();
+$css_files = array('header' => array(), 'footer' => array());
+$js_files = array('header' => array(), 'footer' => array());
+
 include('config.php');
 
 include('routing.php');

@@ -7,18 +7,26 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="@julioelpoeta">
+		<meta http-equiv="Content-Language" content="en">
+		<meta name="description" content="<?php if(isset($description)) echo $description; ?>">
 
 		<meta charset="utf-8">
 
-		<title>InstaTake PHP</title>
-
-		<!-- Bootstrap core CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+		<title>
+			<?php if(isset($title)) echo $title; ?>
+		</title>
 
 
-		<link rel="stylesheet" type="text/css" href="/css/global.css"/>
-		<link rel="stylesheet" type="text/css" href="/css/slider.css"/>
+		<!-- CSS AND JS-->
+		<?php
+			foreach($js_files['header'] AS $file) {
+				echo '<script  src="' . $file . '></script>'.PHP_EOL;
+			}
+
+			foreach($css_files['header'] AS $file) {
+				echo '<link href="' . $file . '" rel="stylesheet">'.PHP_EOL;
+			}
+		?>
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
