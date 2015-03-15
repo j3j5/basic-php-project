@@ -39,9 +39,4 @@
 		<![endif]-->
 	</head>
 	<body>
-		<div class="site-wrapper">
-			<div class="inner cover">
-				<div class="page-header">
-					<h1 class="cover-heading">PROJECT_NAME</h1>
-				</div>
-				<?php include('alerts.php'); ?>
+		<div class="container">
