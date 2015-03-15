@@ -8,12 +8,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="@julioelpoeta">
 		<meta http-equiv="Content-Language" content="en">
-		<meta name="description" content="<?php if(isset($description)) echo $description; ?>">
+		<meta name="title" content="<?php echo $title; ?>" />
+		<meta name="description" content="<?php echo $description; ?>" />
+		<meta http-equiv="og:title" content="<?php echo $title; ?>" />
+		<meta http-equiv="og:description" content="<?php echo $description; ?>" />
+		<meta name="description" content="<?php echo $description; ?>">
 
 		<meta charset="utf-8">
 
 		<title>
-			<?php if(isset($title)) echo $title; ?>
+			<?php echo $title; ?>
 		</title>
 
 
