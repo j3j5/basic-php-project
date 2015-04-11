@@ -18,7 +18,22 @@ include('routing.php');
 require('functions.php');
 
 // Load the controller
-include(__DIR__ . DIRECTORY_SEPARATOR . $controller);
+$extra = include(__DIR__ . DIRECTORY_SEPARATOR . $controller);
+
+if(isset($extra['response_type'])){
+	switch($extra['response_type']) {
+		case 'json':
+			header('Content-type: application/json');
+			echo $extra['response'];
+			break;
+		case 'file':
+			break;
+		case 'html':
+			// There should be a $view defined
+		default:
+			break;
+	}
+}
 
 // Stop execution if there's no view
 if(empty($view)) {
@@ -30,11 +45,15 @@ if(!is_file(__DIR__ . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "$vi
 	$view = '404';
 }
 
-include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."header.php");
+if(isset($extra['no_header']) OR !$extra['no_header']) {
+	include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."header.php");
+}
 
 extract($view_data);
 include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."$view.php");
+if(isset($extra['no_footer']) OR !$extra['no_footer']) {
+	include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."footer.php");
+}
 
-include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."footer.php");
 
 ob_end_flush();
