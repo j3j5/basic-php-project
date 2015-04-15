@@ -14,6 +14,13 @@ if(PHP_SAPI == 'cli') {
 				${$component} = $argv[$key+1];
 			}
 		}
+		// If there were more arguments on the CLI, add them together to the last component, the first 2 are script and controller.
+		if(count($argv) + 2 > count($arguments_structure)) {
+			$arguments = $argv;
+			end($arguments_structure);
+			${$arguments_structure[key($arguments_structure)]} = implode(' ', array_splice($arguments, 2));
+		}
+
 		if(!is_file(__DIR__ . DIRECTORY_SEPARATOR . "cli" . DIRECTORY_SEPARATOR . "$controller.php")) {
 			$controller = '404';
 		}
