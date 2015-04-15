@@ -1,12 +1,11 @@
 <?php
 
 $parameters = array();
+
+include(__DIR__ .  '/custom.routing.php');
+
 // CLI execution
 if(PHP_SAPI == 'cli') {
-	$arguments_structure = array(
-		'controller',
-		'username',
-	);
 	if($argc >= 2) {
 		foreach($arguments_structure AS $key => $component) {
 			if(isset($argv[$key+1])) {
@@ -31,12 +30,6 @@ if(PHP_SAPI == 'cli') {
 	$controller = "cli" . DIRECTORY_SEPARATOR ."$controller.php";
 // WEBSERVER
 } else {
-	// The url is as follows http://yourserver.com/controller/username
-	$url_structure = array(
-		'controller',
-		'username'
-	);
-
 	$uri_segments = FALSE;
 	if(mb_strlen($_SERVER['REQUEST_URI']) > 1) { // Homepage has '/' as REQUEST_URI
 		$uri = $_SERVER['REQUEST_URI'];
