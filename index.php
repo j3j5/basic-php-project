@@ -1,4 +1,7 @@
 <?php
+// Force UTF-8 everywhere!!!
+ini_set("default_charset", 'utf-8');
+mb_internal_encoding('UTF-8');
 
 ob_start();
 
