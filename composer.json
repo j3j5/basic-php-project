@@ -1,6 +1,8 @@
 {
 	"name": "j3j5/basic-php-project",
 	"description": "A very simple frawework for PHP apps.",
+	"keywords": ["php", "framework", "simple"],
+	"type": "project",
 	"require": {
 		"monolog/monolog": "~1.13",
 		"illuminate/cache": "4.2.*",
