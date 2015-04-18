@@ -14,14 +14,14 @@ $description = '';
 $css_files = array('header' => array(), 'footer' => array());
 $js_files = array('header' => array(), 'footer' => array());
 
-include('config.php');
+include(dirname(__DIR__) . DIRECTORY_SEPARATOR . '/../config.php');
 
-include('routing.php');
+include(dirname(__DIR__) . DIRECTORY_SEPARATOR . '/../routing.php');
 
-require('functions.php');
+require(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'functions.php');
 
 // Load the controller
-$extra = include(__DIR__ . DIRECTORY_SEPARATOR . $controller);
+$extra = include(APP_ROOT . DIRECTORY_SEPARATOR . $controller);
 
 if(isset($extra['response_type'])){
 	switch($extra['response_type']) {
@@ -44,18 +44,18 @@ if(empty($view)) {
 }
 
 // Don't try to load a non existant view
-if(!is_file(__DIR__ . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "$view.php")) {
+if(!is_file(APP_ROOT . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "$view.php")) {
 	$view = '404';
 }
 
 if(isset($extra['no_header']) OR !$extra['no_header']) {
-	include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."header.php");
+	include(APP_ROOT . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."header.php");
 }
 
 extract($view_data);
-include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."$view.php");
+include(APP_ROOT . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."$view.php");
 if(isset($extra['no_footer']) OR !$extra['no_footer']) {
-	include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."footer.php");
+	include(APP_ROOT . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."footer.php");
 }
 
 

@@ -1,6 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
+use Monolog\Logger;
+use \Illuminate\Cache\CacheManager;
+use \Illuminate\Filesystem\Filesystem;
+
+define("APP_ROOT", __DIR__);
 
 /**
  * Load here common styles and scripts for the page, you can add more on a per controller basis later
